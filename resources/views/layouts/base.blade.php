@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
         @endif
 
         <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+		<link rel="shortcut icon" href="{{ url(asset('favicon.jpeg')) }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -22,6 +22,7 @@
 
         <!-- Scripts -->
         <script src="{{ url(mix('js/app.js')) }}" defer></script>
+        <script src="{{ asset('template/js/init-alpine.js') }}"></script>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
