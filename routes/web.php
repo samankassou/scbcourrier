@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Livewire\Admin\Couriers;
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Settings;
+use App\Http\Livewire\Admin\Users;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
@@ -50,8 +53,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', Dashboard::class)
         ->name('dashboard');
-    Route::get('admin/couriers', Dashboard::class)
+    Route::get('admin/couriers', Couriers::class)
         ->name('couriers');
+    Route::get('admin/users', Users::class)
+        ->name('users');
+    Route::get('admin/settings', Settings::class)
+        ->name('settings');
 
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')
