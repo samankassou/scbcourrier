@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', Dashboard::class)
+    Route::get('admin/dashboard', Dashboard::class)
         ->name('dashboard');
 
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
