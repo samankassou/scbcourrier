@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        'A6digital\Image\DefaultProfileImageServiceProvider',
 
         /*
          * Application Service Providers...
