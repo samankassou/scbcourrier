@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', Dashboard::class)
         ->name('dashboard');
+    Route::get('admin/couriers', Dashboard::class)
+        ->name('couriers');
 
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')
