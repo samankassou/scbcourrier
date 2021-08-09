@@ -8,6 +8,8 @@ class Users extends Component
 {
     public function render()
     {
-        return view('livewire.admin.users')->extends('layouts.admin', ['title' => "Users"]);
+        return view('livewire.admin.users')
+            ->extends('layouts.admin', ['title' => "Users"])
+            ->section('main');
     }
 }
