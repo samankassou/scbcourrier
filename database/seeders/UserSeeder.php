@@ -27,6 +27,9 @@ class UserSeeder extends Seeder
         );
 
         $img = DefaultProfileImage::create($user->name);
-        Storage::put("profile.png", $img->encode());
+        Storage::put("avatars/profile.png", $img->encode());
+        $imgPath = Storage::path("avatars/profile.png");
+        $user->addMedia($imgPath)->toMediaCollection();
+        Storage::delete("avatars/profile.png");
     }
 }
