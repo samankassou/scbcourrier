@@ -1,8 +1,14 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('./node_modules/tailwindcss/colors');
 
 module.exports = {
+    darkMode: 'class',
     theme: {
         extend: {
+            colors: {
+                teal: colors.teal,
+                orange: colors.orange
+            },
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
