@@ -4,13 +4,17 @@
     "Users": "Utilisateurs",
     "Settings": "Paramètres",
     "Recipient": "Destinataire",
+    "Recipients": "Destinataires",
     "Object": "Objet",
     "Status": "Statut",
     "No item": "Aucun élément disponible",
     "Sign in to your account": "Connectez-vous",
     "Remember": "Se souvenir",
     "Sign in": "Se connecter",
+    "Log in": "Se connecter",
+    "Log out": "Se déconnecter",
     "Email address": "Adresse email",
     "Password": "Mot de passe",
-    "Forgot your password?": "Mot de passe oublié?"
+    "Forgot your password?": "Mot de passe oublié?",
+    "An application for courier manage": "Une application de gestion de courrier"
 }

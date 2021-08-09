@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Livewire\Admin\Couriers;
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Recipients;
 use App\Http\Livewire\Admin\Settings;
 use App\Http\Livewire\Admin\Users;
 use App\Http\Livewire\Auth\Login;
@@ -57,6 +58,8 @@ Route::middleware('auth')->group(function () {
         ->name('couriers');
     Route::get('admin/users', Users::class)
         ->name('users');
+    Route::get('admin/recipients', Recipients::class)
+        ->name('recipients');
     Route::get('admin/settings', Settings::class)
         ->name('settings');
 
