@@ -8,7 +8,8 @@ use Livewire\Component;
 class Users extends Component
 {
     protected $listeners = [
-        'userAdded' => '$refresh'
+        'userAdded' => '$refresh',
+        'userDeleted' => '$refresh'
     ];
 
     public function render()

@@ -58,6 +58,18 @@ class UserObserver
     }
 
     /**
+     * Handle the User "deleting" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function deleting(User $user)
+    {
+        $user->deleted_by = auth()->user()->id;
+        $user->save();
+    }
+
+    /**
      * Handle the User "deleted" event.
      *
      * @param  \App\Models\User  $user
@@ -65,7 +77,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $user->deleted_by = auth()->user()->id;
+        //$user->deleted_by = auth()->user()->id;
     }
 
     /**

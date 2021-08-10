@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use App\Observers\UserObserver;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable, InteractsWithMedia, HasRolesAndAbilities;
+    use HasFactory, Notifiable, InteractsWithMedia, HasRolesAndAbilities, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -51,12 +51,6 @@ class User extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
         'status' => 'boolean'
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-        User::observe(UserObserver::class);
-    }
 
     public function couriers()
     {
