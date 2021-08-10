@@ -22,6 +22,7 @@ class Create extends ModalComponent
     protected $rules = [
         'email' => 'required|email|unique:users',
         'name' => 'required',
+        'role' => 'required|exists:roles,name',
     ];
 
     public function render()

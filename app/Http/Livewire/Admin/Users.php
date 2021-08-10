@@ -26,5 +26,7 @@ class Users extends Component
         $user = User::find($id);
         $user->status = !$user->status;
         $user->save();
+        $message = $user->status ? "User account enabled" : "User account disabled";
+        $this->emit("success", __("Success:"), __($message));
     }
 }
