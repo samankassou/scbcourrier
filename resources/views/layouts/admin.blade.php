@@ -18,3 +18,15 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        Livewire.on('success', (title, message) => {
+            iziToast.success({
+                title: title,
+                message: message,
+                position: 'topRight',
+            });
+        })
+
+    </script>
+@endpush

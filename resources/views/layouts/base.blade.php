@@ -18,6 +18,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
+        <link rel="stylesheet" href="{{ asset('vendor/izitoast/css/iziToast.min.css') }}">
         @livewireStyles
 
         <!-- Scripts -->
@@ -31,6 +32,7 @@
     <body>
         @yield('body')
 
+        <script src="{{ asset('vendor/izitoast/js/iziToast.min.js') }}"></script>
         @livewireScripts
         @livewire('livewire-ui-modal')
         @stack('scripts')

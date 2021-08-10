@@ -47,6 +47,7 @@ class Create extends ModalComponent
         $user->assign($this->role);
 
         $this->emit("userAdded");
+        $this->emit("success", __("Success:"), __("User saved!"));
         $this->closeModal();
     }
 

@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        User::unsetEventDispatcher();
         $user = User::create(
             [
                 'name' => 'Admin',
