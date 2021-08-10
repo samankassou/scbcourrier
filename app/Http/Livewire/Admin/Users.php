@@ -9,6 +9,7 @@ class Users extends Component
 {
     protected $listeners = [
         'userAdded' => '$refresh',
+        'userUpdated' => '$refresh',
         'userDeleted' => '$refresh'
     ];
 
