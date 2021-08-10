@@ -26,6 +26,8 @@ class UserSeeder extends Seeder
             ]
         );
 
+        $user->assign('admin');
+
         $img = DefaultProfileImage::create($user->name);
         Storage::put("avatars/profile.png", $img->encode());
         $imgPath = Storage::path("avatars/profile.png");

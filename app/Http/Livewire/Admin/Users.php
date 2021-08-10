@@ -7,9 +7,13 @@ use Livewire\Component;
 
 class Users extends Component
 {
+    protected $listeners = [
+        'userAdded' => '$refresh'
+    ];
+
     public function render()
     {
-        $users = User::paginate(10);
+        $users = User::with('roles')->paginate(10);
         return view('livewire.admin.users', [
             'users' => $users
         ])
