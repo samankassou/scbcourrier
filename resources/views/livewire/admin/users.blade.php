@@ -48,7 +48,17 @@
                         {{ optional($user->roles)->implode('title', ', ') }}
                     </td>
                     <td class="px-4 py-3 text-xs">
-
+                            <label wire:change="toggleUserStatus({{ $user->id }})" for="toogle{{ $user->id }}" class="flex items-center cursor-pointer">
+                                <!-- toggle -->
+                                <div class="relative">
+                                    <!-- input -->
+                                    <input id="toogle{{ $user->id }}" type="checkbox" class="sr-only" @if($user->status) checked @endif>
+                                    <!-- line -->
+                                    <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                                    <!-- dot -->
+                                    <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                                </div>
+                            </label>
                     </td>
                     <td class="px-4 py-3 text-sm">
                     </td>

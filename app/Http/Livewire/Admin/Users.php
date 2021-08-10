@@ -20,4 +20,11 @@ class Users extends Component
             ->extends('layouts.admin', ['title' => "Users"])
             ->section('main');
     }
+
+    public function toggleUserStatus($id)
+    {
+        $user = User::find($id);
+        $user->status = !$user->status;
+        $user->save();
+    }
 }

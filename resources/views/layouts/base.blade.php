@@ -19,6 +19,13 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
         <link rel="stylesheet" href="{{ asset('vendor/izitoast/css/iziToast.min.css') }}">
+        <style>
+            /* Toggle A */
+            input:checked~.dot {
+                transform: translateX(100%);
+                background-color: rgb(217, 119, 6);
+            }
+        </style>
         @livewireStyles
 
         <!-- Scripts -->
