@@ -1,6 +1,11 @@
 @section('title', __('Users'))
 {{-- Users Table --}}
 <div class="w-full overflow-hidden rounded-lg shadow-md">
+    <div class="flex justify-end items-center">
+        <div class="m-w-12 my-3 mx-2">
+            <x-forms.button text="Créer" />
+        </div>
+    </div>
     <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
             <thead>

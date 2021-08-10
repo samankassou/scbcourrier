@@ -14,7 +14,9 @@
         "laravel-frontend-presets/tall": "^3.1",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "livewire-ui/modal": "^1.0",
         "livewire/livewire": "^2.5",
+        "silber/bouncer": "v1.0.0-rc.10",
         "spatie/laravel-medialibrary": "^9.0.0"
     },
     "require-dev": {
