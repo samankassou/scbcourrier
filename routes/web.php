@@ -3,7 +3,8 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Livewire\Admin\Couriers;
-use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Admin\Recipients;
 use App\Http\Livewire\Admin\Settings;
 use App\Http\Livewire\Admin\Users;
@@ -58,7 +59,7 @@ Route::middleware('auth')->group(function () {
         'prefix' => 'admin',
         'as' => 'admin.',
     ], function () {
-        Route::get('dashboard', Dashboard::class)
+        Route::get('dashboard', AdminDashboard::class)
             ->name('dashboard');
         Route::get('couriers', Couriers::class)
             ->name('couriers');
@@ -68,6 +69,15 @@ Route::middleware('auth')->group(function () {
             ->name('recipients');
         Route::get('settings', Settings::class)
             ->name('settings');
+    });
+
+    /* Recipient routes */
+    Route::group([
+        'prefix' => 'recipient',
+        'as' => 'recipient.',
+    ], function () {
+        Route::get('dashboard', RecipientDashboard::class)
+            ->name('dashboard');
     });
 
 
