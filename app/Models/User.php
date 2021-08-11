@@ -8,12 +8,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable, InteractsWithMedia, HasRolesAndAbilities, SoftDeletes;
+    use HasFactory, Notifiable, InteractsWithMedia, HasRolesAndAbilities;
 
     /**
      * The attributes that are mass assignable.

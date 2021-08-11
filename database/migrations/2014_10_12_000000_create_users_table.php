@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->foreignId('updated_by')->nullable();
             $table->foreignId('deleted_by')->nullable();
             $table->foreignId('restored_by')->nullable();
-            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
