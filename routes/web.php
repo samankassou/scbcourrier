@@ -52,16 +52,24 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('admin/dashboard', Dashboard::class)
-        ->name('dashboard');
-    Route::get('admin/couriers', Couriers::class)
-        ->name('couriers');
-    Route::get('admin/users', Users::class)
-        ->name('users');
-    Route::get('admin/recipients', Recipients::class)
-        ->name('recipients');
-    Route::get('admin/settings', Settings::class)
-        ->name('settings');
+
+    /* Admin routes */
+    Route::group([
+        'prefix' => 'admin',
+        'as' => 'admin.',
+    ], function () {
+        Route::get('dashboard', Dashboard::class)
+            ->name('dashboard');
+        Route::get('couriers', Couriers::class)
+            ->name('couriers');
+        Route::get('users', Users::class)
+            ->name('users');
+        Route::get('recipients', Recipients::class)
+            ->name('recipients');
+        Route::get('settings', Settings::class)
+            ->name('settings');
+    });
+
 
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')

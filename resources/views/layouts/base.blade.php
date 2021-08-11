@@ -13,9 +13,6 @@
         <!-- Favicon -->
 		<link rel="shortcut icon" href="{{ url(asset('favicon.jpeg')) }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
         <link rel="stylesheet" href="{{ asset('vendor/izitoast/css/iziToast.min.css') }}">
