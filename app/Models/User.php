@@ -54,6 +54,6 @@ class User extends Authenticatable implements HasMedia
 
     public function couriers()
     {
-        return $this->hasMany(Courier::class);
+        return $this->hasMany(Courier::class, 'recipient_id');
     }
 }
