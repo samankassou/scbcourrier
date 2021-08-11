@@ -21,11 +21,14 @@ class Edit extends ModalComponent
         $this->role = $user->getRoles()->toArray()[0];
     }
 
-    protected $rules = [
-        'email' => 'required|email|unique:users',
-        'name' => 'required',
-        'role' => 'required|exists:roles,name',
-    ];
+    protected function rules()
+    {
+        return [
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'name' => 'required',
+            'role' => 'required|exists:roles,name',
+        ];
+    }
 
     public function render()
     {
@@ -39,6 +42,7 @@ class Edit extends ModalComponent
 
     public function save()
     {
+        $this->validate();
         $this->user->update([
             'name' => $this->name,
             'email' => $this->email,

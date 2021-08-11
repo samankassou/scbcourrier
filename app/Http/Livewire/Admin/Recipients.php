@@ -15,7 +15,7 @@ class Recipients extends Component
 
     public function render()
     {
-        $recipients = User::whereIs('recipient')->withCount('couriers')->paginate(10);
+        $recipients = User::recipients()->withCount('couriers')->paginate(10);
         return view('livewire.admin.recipients', compact('recipients'))
             ->extends('layouts.admin', ['title' => "Recipients"])
             ->section('main');
