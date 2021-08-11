@@ -44,7 +44,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="4">@lang("No item")</td>
+                    <td class="py-3 text-center text-sm text-gray-500" colspan="4">@lang("No item")</td>
                 </tr>
                 @endforelse
             </tbody>
