@@ -54,7 +54,12 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        //$user->updated_by = auth()->user()->id;
+        $user->clearMediaCollection();
+        $img = DefaultProfileImage::create($user->name);
+        Storage::put("avatars/profile.png", $img->encode());
+        $imgPath = Storage::path("avatars/profile.png");
+        $user->addMedia($imgPath)->toMediaCollection();
+        Storage::delete("avatars/profile.png");
     }
     /**
      * Handle the User "deleted" event.
