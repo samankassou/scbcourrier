@@ -56,8 +56,13 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Courier::class, 'recipient_id');
     }
 
-    public function scopeRecipients()
+    public function scopeRecipients($query)
     {
-        return $this->whereIs('recipient');
+        return $query->whereIs('recipient');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(1);
     }
 }
