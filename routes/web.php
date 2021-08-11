@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\RedirectController;
 use App\Http\Livewire\Admin\Couriers;
 use App\Http\Livewire\Recipient\Couriers as RecipientCouriers;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
@@ -54,6 +55,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('redirect', RedirectController::class)->name('redirect');
 
     /* Admin routes */
     Route::group([

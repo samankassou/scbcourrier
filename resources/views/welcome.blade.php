@@ -37,7 +37,7 @@
 
                     <p class="text-2xl leading-5 tracking-wider text-yellow-700">@lang("An application for courier manage")</p>
                     @auth
-                    <a href="{{ route('dashboard') }}" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
+                    <a href="{{ route('redirect') }}" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
                         @lang("Dashboard")
                     </a>
                     @else
