@@ -78,7 +78,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td class="text-center" colspan="4">@lang("No item")</td>
+                    <td class="text-center py-3 text-sm text-gray-500" colspan="4">@lang("No item")</td>
                 </tr>
                 @endforelse
             </tbody>
