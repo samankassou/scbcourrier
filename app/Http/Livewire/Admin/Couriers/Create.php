@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Couriers;
 
+use App\Models\Courier;
 use App\Models\User;
 use LivewireUI\Modal\ModalComponent;
 
@@ -16,10 +17,11 @@ class Create extends ModalComponent
     public $state;
 
     protected $rules = [
-        'date'   => 'required|date',
-        'code'   => 'required',
-        'sender' => 'required',
-        'object' => 'required',
+        'date'      => 'required|date',
+        'code'      => 'required',
+        'sender'    => 'required',
+        'object'    => 'required',
+        'recipient' => 'nullable|exists:users,id',
     ];
 
     public function render()
@@ -34,6 +36,19 @@ class Create extends ModalComponent
     public function save()
     {
         $this->validate();
-        dd("ok");
+
+        Courier::create([
+            'date'         => $this->date,
+            'code'         => $this->code,
+            'sender'       => $this->sender,
+            'object'       => $this->object,
+            'recipient_id' => $this->recipient,
+            'comments'     => $this->comments,
+            'status'       => $this->state,
+        ]);
+
+        $this->emit("courierAdded");
+        $this->emit("success", __("Success:"), __("Courier saved!"));
+        $this->closeModal();
     }
 }
