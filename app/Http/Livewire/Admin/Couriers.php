@@ -11,7 +11,8 @@ class Couriers extends Component
     use WithPagination;
 
     protected $listeners = [
-        'courierAdded' => '$refresh'
+        'courierAdded' => '$refresh',
+        'courierDeleted' => '$refresh',
     ];
 
     public function mount()

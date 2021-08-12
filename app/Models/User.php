@@ -68,4 +68,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->recipients()->active();
     }
+
+    public function getAvatarUrl()
+    {
+        return $this->media[0]->getUrl();
+    }
 }
