@@ -23,11 +23,14 @@ class CourierFactory extends Factory
     public function definition()
     {
         return [
+            'date' => $this->faker->dateTimeBetween('-7 months'),
+            'code' => $this->faker->unique()->numberBetween(100, 900),
             'sender' => $this->faker->name(),
             'object' => $this->faker->paragraph(2),
             'recipient_id' => User::all()->random()->id,
             'category_id' => 1,
-            'status' => $this->faker->randomElement(['reçu', 'traité', 'rejeté']),
+            'status' => $this->faker->randomElement(['En cours', 'Traité', 'Rejeté']),
+            'comments' => $this->faker->paragraph(2),
             'created_by' => 1,
         ];
     }

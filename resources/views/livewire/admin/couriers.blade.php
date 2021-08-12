@@ -6,15 +6,30 @@
             <thead>
                 <tr
                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">@lang("Recipient")</th>
+                    <th class="px-4 py-3">@lang("Code")</th>
+                    <th class="px-4 py-3">@lang("Date")</th>
+                    <th class="px-4 py-3">@lang("Sender")</th>
                     <th class="px-4 py-3">@lang("Object")</th>
+                    <th class="px-4 py-3">@lang("Assignee")</th>
+                    <th class="px-4 py-3">@lang("Comments")</th>
                     <th class="px-4 py-3">@lang("Status")</th>
-                    <th class="px-4 py-3">Date</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 @forelse ($couriers as $courier)
                     <tr class="text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3 text-sm">
+                            {{ $courier->code }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{ optional($courier->date)->format('d/m/Y') }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{ $courier->sender }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{ substr($courier->object, 0, 30).'...' }}
+                        </td>
                         <td class="px-4 py-3">
                             <div class="flex items-center text-sm">
                                 <!-- Avatar with inset shadow -->
@@ -33,13 +48,10 @@
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{ substr($courier->object, 0, 30).'...' }}
+                            {{ substr($courier->comments, 0, 30).'...' }}
                         </td>
                         <td class="px-4 py-3 text-xs">
                             <x-courier.status status="{{ $courier->status }}" />
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            {{ optional($courier->created_at)->format('d/m/Y') }}
                         </td>
                     </tr>
                 @empty

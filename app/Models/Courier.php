@@ -10,15 +10,29 @@ class Courier extends Model
     use HasFactory;
 
     protected $fillable = [
+        'date',
+        'code',
         'sender',
         'object',
         'recipient_id',
         'category_id',
         'status',
+        'comments',
         'created_by',
         'updated_by',
         'deleted_by',
-        'restored_by'
+        'restored_by',
+        'restored_at'
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime',
+        'restored_at' => 'datetime',
     ];
 
     public function recipient()
