@@ -12,6 +12,7 @@ class Couriers extends Component
 
     protected $listeners = [
         'courierAdded' => '$refresh',
+        'courierUpdated' => '$refresh',
         'courierDeleted' => '$refresh',
     ];
 

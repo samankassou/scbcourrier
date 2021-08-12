@@ -31,7 +31,7 @@ class Courier extends Model
      * @var array
      */
     protected $casts = [
-        'date' => 'datetime',
+        'date' => 'datetime:Y-m-d',
         'restored_at' => 'datetime',
     ];
 
