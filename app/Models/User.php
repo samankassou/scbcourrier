@@ -63,4 +63,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $query->whereStatus(1);
     }
+
+    public function scopeActiveRecipients()
+    {
+        return $this->recipients()->active();
+    }
 }
