@@ -23,8 +23,16 @@ class Couriers extends Component
     public function render()
     {
         $couriers = Courier::latest()->paginate(10);
-        return view('livewire.admin.couriers', compact('couriers'))
+        $status = ['En cours', 'Traité', 'Rejeté'];
+        return view('livewire.admin.couriers', compact('couriers', 'status'))
             ->extends('layouts.admin', ['title' => "Couriers"])
             ->section('main');
+    }
+
+    public function updateCourierStatus($courierId, $value)
+    {
+        Courier::find($courierId)->update(['status' => $value]);
+        $this->emit("courierUpdated");
+        $this->emit("success", __("Success:"), __("Courier updated!"));
     }
 }

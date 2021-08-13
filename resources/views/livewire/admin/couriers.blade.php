@@ -22,7 +22,7 @@
                     <th class="px-4 py-3">@lang("Sender")</th>
                     <th class="px-4 py-3">@lang("Object")</th>
                     <th class="px-4 py-3">@lang("Assignee")</th>
-                    <th class="px-4 py-3">@lang("Comments")</th>
+                    {{-- <th class="px-4 py-3">@lang("Comments")</th> --}}
                     <th class="px-4 py-3">@lang("Status")</th>
                     <th class="px-4 py-3"></th>
                 </tr>
@@ -40,17 +40,11 @@
                             {{ $courier->sender }}
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{ substr($courier->object, 0, 30).'...' }}
+                            {{ substr($courier->object, 0, 20).'...' }}
                         </td>
                         <td class="px-4 py-3">
                             @if ($courier->recipient)
                             <div class="flex items-center text-sm">
-                                <!-- Avatar with inset shadow -->
-                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="{{ optional($courier->recipient)->getAvatarUrl() }}"
-                                        alt="" loading="lazy" />
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                </div>
                                 <div>
                                     <p class="font-semibold">{{ optional($courier->recipient)->name }}</p>
                                     <p class="text-xs text-gray-600 dark:text-gray-400">
@@ -60,13 +54,22 @@
                             </div>
                             @endif
                         </td>
-                        <td class="px-4 py-3 text-sm">
+                        {{-- <td class="px-4 py-3 text-sm">
                             {{ substr($courier->comments, 0, 30).'...' }}
-                        </td>
+                        </td> --}}
                         <td class="px-4 py-3 text-xs">
-                            @if ($courier->status)
+                            <select wire:change="updateCourierStatus({{ $courier->id }}, $event.target.value)"
+                                class="apearance-none mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 dark:text-gray-800 text-xs">
+                                <option value=""></option>
+                                @foreach ($status as $state)
+                                <option class="py-4" value="{{ $state }}" {{ $courier->status === $state ? 'selected' : '' }}>
+                                    <x-courier.status status="{{ $state }}" />
+                                </option>
+                                @endforeach
+                            </select>
+                            {{-- @if ($courier->status)
                             <x-courier.status status="{{ $courier->status }}" />
-                            @endif
+                            @endif --}}
                         </td>
                         <td class="px-4 py-3 text-xs flex items-center gap-1">
                             <a href="{{ route('admin.couriers.show', $courier->id) }}" title="@lang('Details')" class="text-yellow-600 hover:text-yellow-900">
