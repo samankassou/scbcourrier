@@ -12,7 +12,7 @@ class Couriers extends Component
 
     public function render()
     {
-        $couriers = auth()->user()->couriers()->paginate(10);
+        $couriers = auth()->user()->couriers()->latest()->paginate(10);
         return view('livewire.recipient.couriers', compact('couriers'))
             ->extends('layouts.admin', ['title' => "Couriers"])
             ->section('main');
