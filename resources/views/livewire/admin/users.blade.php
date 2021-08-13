@@ -44,8 +44,16 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-4 py-3 text-sm">
-                        {{ optional($user->roles)->implode('title', ', ') }}
+                    <td class="px-4 py-3 text-xs">
+                        <select wire:change="updateUserRole({{ $user->id }}, $event.target.value)"
+                            class="apearance-none mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 dark:text-gray-800 text-xs">
+                            <option value=""></option>
+                            @foreach ($roles as $role)
+                            <option class="py-4" value="{{ $role->name }}" {{ $user->roles[0]->name === $role->name ? 'selected' : '' }}>
+                                @lang($role->title)
+                            </option>
+                            @endforeach
+                        </select>
                     </td>
                     <td class="px-4 py-3 text-xs">
                             <label wire:change="toggleUserStatus({{ $user->id }})" for="toogle{{ $user->id }}" class="flex items-center cursor-pointer">
