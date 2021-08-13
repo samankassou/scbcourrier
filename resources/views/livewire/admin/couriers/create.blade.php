@@ -29,7 +29,7 @@
                 <x-forms.label for="recipient" message="Assignee" />
                 <select id="recipient" wire:ignore wire:model.lazy="recipient"
                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
-                    <option>Sélectionnez un attributaire</option>
+                    <option value="">Sélectionnez un attributaire</option>
                     @foreach ($recipients as $recipient)
                     <option class="my-4" value="{{ $recipient->id }}">{{ $recipient->name }}</option>
                     @endforeach

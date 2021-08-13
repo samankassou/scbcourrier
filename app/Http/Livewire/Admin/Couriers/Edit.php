@@ -62,6 +62,10 @@ class Edit extends ModalComponent
             $this->courier->update([
                 'recipient_id' => $this->recipient
             ]);
+        } else {
+            $this->courier->update([
+                'recipient_id' => null
+            ]);
         }
 
         $this->emit("courierUpdated");

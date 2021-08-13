@@ -37,15 +37,18 @@ class Create extends ModalComponent
     {
         $this->validate();
 
-        Courier::create([
+        $courier = Courier::create([
             'date'         => $this->date,
             'code'         => $this->code,
             'sender'       => $this->sender,
             'object'       => $this->object,
-            'recipient_id' => $this->recipient,
             'comments'     => $this->comments,
             'status'       => $this->state,
         ]);
+
+        if ($this->recipient) {
+            $courier->update(['recipient_id' => $this->recipient]);
+        }
 
         $this->emit("courierAdded");
         $this->emit("success", __("Success:"), __("Courier saved!"));
