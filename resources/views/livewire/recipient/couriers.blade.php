@@ -33,7 +33,7 @@
                     <td class="px-4 py-3 text-sm">
                         {{ substr($courier->comments, 0, 30).'...' }}
                     </td>
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-xs">
                         <x-courier.status status="{{ $courier->status }}" />
                     </td>
                     <td class="px-4 py-3 text-sm">
@@ -49,7 +49,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td class="py-3 text-center text-sm text-gray-500" colspan="4">@lang("No item")</td>
+                    <td class="py-3 text-center text-sm text-gray-500" colspan="6">@lang("No item")</td>
                 </tr>
                 @endforelse
             </tbody>
