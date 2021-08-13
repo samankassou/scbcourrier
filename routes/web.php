@@ -6,6 +6,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Livewire\Admin\Couriers;
 use App\Http\Livewire\Admin\Couriers\Show as ShowCourier;
 use App\Http\Livewire\Recipient\Couriers as RecipientCouriers;
+use App\Http\Livewire\Recipient\Couriers\Show as RecipientShowCourier;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Admin\Recipients;
@@ -87,6 +88,8 @@ Route::middleware('auth')->group(function () {
             ->name('dashboard');
         Route::get('couriers', RecipientCouriers::class)
             ->name('couriers');
+        Route::get('couriers/{courier}', RecipientShowCourier::class)
+            ->name('couriers.show');
     });
 
 
