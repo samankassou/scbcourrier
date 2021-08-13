@@ -1,5 +1,5 @@
-<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+<div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="px-4 py-8 bg-white dark:bg-gray-700 shadow sm:rounded-lg sm:px-10">
         <form wire:submit.prevent="save">
             <div>
                 <x-forms.label for="email" message="Email address" />
