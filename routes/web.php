@@ -11,6 +11,7 @@ use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Admin\Recipients;
 use App\Http\Livewire\Admin\Settings;
+use App\Http\Livewire\Recipient\Settings as RecipientSettings;
 use App\Http\Livewire\Admin\Users;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -90,6 +91,8 @@ Route::middleware('auth')->group(function () {
             ->name('couriers');
         Route::get('couriers/{courier}', RecipientShowCourier::class)
             ->name('couriers.show');
+        Route::get('settings', RecipientSettings::class)
+            ->name('settings');
     });
 
 

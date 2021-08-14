@@ -32,6 +32,8 @@ class Login extends Component
         }
         if (!Auth::user()->status) {
             Auth::logout();
+            session()->invalidate();
+            session()->regenerateToken();
             $this->addError('email', trans('Your account is disabled.'));
             return;
         }
