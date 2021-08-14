@@ -10,7 +10,7 @@
                     <th class="px-4 py-3">@lang("Date")</th>
                     <th class="px-4 py-3">@lang("Sender")</th>
                     <th class="px-4 py-3">@lang("Object")</th>
-                    <th class="px-4 py-3">@lang("Comments")</th>
+                    {{-- <th class="px-4 py-3">@lang("Comments")</th> --}}
                     <th class="px-4 py-3">@lang("Status")</th>
                     <th class="px-4 py-3"></th>
                 </tr>
@@ -30,11 +30,19 @@
                     <td class="px-4 py-3 text-sm">
                         {{ substr($courier->object, 0, 30).'...' }}
                     </td>
-                    <td class="px-4 py-3 text-sm">
+                    {{-- <td class="px-4 py-3 text-sm">
                         {{ substr($courier->comments, 0, 30).'...' }}
-                    </td>
+                    </td> --}}
                     <td class="px-4 py-3 text-xs">
-                        <x-courier.status status="{{ $courier->status }}" />
+                        <select wire:change="updateCourierStatus({{ $courier->id }}, $event.target.value)"
+                            class="apearance-none mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 dark:text-gray-800 text-xs">
+                            <option value=""></option>
+                            @foreach ($status as $state)
+                            <option class="py-4" value="{{ $state }}" {{ $courier->status === $state ? 'selected' : '' }}>
+                                <x-courier.status status="{{ $state }}" />
+                            </option>
+                            @endforeach
+                        </select>
                     </td>
                     <td class="px-4 py-3 text-sm">
                         <a href="{{ route('recipient.couriers.show', $courier->id) }}" title="@lang('Details')"
@@ -49,7 +57,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td class="py-3 text-center text-sm text-gray-500" colspan="6">@lang("No item")</td>
+                    <td class="py-3 text-center text-sm text-gray-500" colspan="7">@lang("No item")</td>
                 </tr>
                 @endforelse
             </tbody>
