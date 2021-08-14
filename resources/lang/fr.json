@@ -733,7 +733,7 @@
     "Recipient enabled.": "Destinataire activé.",
     "Courier deleted!": "Courrier supprimé!",
     "User updated!": "Utilisateur modifié!",
-    "Courier updated!": "Courier modifié!",
+    "Courier updated!": "Courrier modifié!",
     "User deleted!": "Utilisateur supprimé!",
     "User account enabled": "Compte de l'utilisateur activé",
     "User account disabled": "Compte de l'utilisateur désactivé",
@@ -741,6 +741,8 @@
     "Sign in to your account": "Connectez-vous",
     "Remember": "Se souvenir",
     "Sign in": "Se connecter",
+    "Writer": "Saisisseur",
+    "Manager": "Responsable",
     "Log out": "Se déconnecter",
     "Email address": "Adresse email",
     "An application for courier manage": "Une application de gestion de courrier"

@@ -34,5 +34,17 @@ class UserSeeder extends Seeder
         $imgPath = Storage::path("avatars/profile.png");
         $user->addMedia($imgPath)->toMediaCollection();
         Storage::delete("avatars/profile.png");
+
+        User::factory(10)
+            ->create()
+            ->each(function ($user) {
+                $role = collect(['admin', 'manager', 'writer', 'recipient'])->random();
+                $user->assign($role);
+                $img = DefaultProfileImage::create($user->name);
+                Storage::put("avatars/profile.png", $img->encode());
+                $imgPath = Storage::path("avatars/profile.png");
+                $user->addMedia($imgPath)->toMediaCollection();
+                Storage::delete("avatars/profile.png");
+            });
     }
 }

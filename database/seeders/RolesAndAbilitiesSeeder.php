@@ -16,9 +16,19 @@ class RolesAndAbilitiesSeeder extends Seeder
     {
         Bouncer::allow('admin')->everything();
 
-        Bouncer::allow('register')->to([
-            'view-user',
-            'view-users',
+        Bouncer::allow('manager')->to([
+            'view-courier',
+            'view-couriers',
+        ]);
+
+        Bouncer::allow('writer')->to([
+            'view-courier',
+            'view-couriers',
+        ]);
+
+        Bouncer::allow('recipient')->to([
+            'view-courier',
+            'view-couriers',
         ]);
     }
 }

@@ -27,7 +27,7 @@ class CourierFactory extends Factory
             'code' => $this->faker->unique()->numberBetween(100, 900),
             'sender' => $this->faker->name(),
             'object' => $this->faker->paragraph(2),
-            'recipient_id' => User::all()->random()->id,
+            'recipient_id' => User::whereIs('recipient')->get()->random()->id,
             'category_id' => 1,
             'status' => $this->faker->randomElement(['En cours', 'Traité', 'Rejeté']),
             'comments' => $this->faker->paragraph(2),
