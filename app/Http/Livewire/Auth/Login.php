@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Auth;
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -29,6 +28,11 @@ class Login extends Component
         if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
+            return;
+        }
+        if (!Auth::user()->status) {
+            Auth::logout();
+            $this->addError('email', trans('Your account is disabled.'));
             return;
         }
 

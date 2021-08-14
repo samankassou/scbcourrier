@@ -67,9 +67,6 @@
                                 </option>
                                 @endforeach
                             </select>
-                            {{-- @if ($courier->status)
-                            <x-courier.status status="{{ $courier->status }}" />
-                            @endif --}}
                         </td>
                         <td class="px-4 py-3 text-xs flex items-center gap-1">
                             <a href="{{ route('admin.couriers.show', $courier->id) }}" title="@lang('Details')" class="text-yellow-600 hover:text-yellow-900">
