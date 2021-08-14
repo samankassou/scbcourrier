@@ -20,4 +20,13 @@ class Recipients extends Component
             ->extends('layouts.admin', ['title' => "Recipients"])
             ->section('main');
     }
+
+    public function toggleRecipientStatus($id)
+    {
+        $user = User::find($id);
+        $user->status = !$user->status;
+        $user->save();
+        $message = $user->status ? "Recipient enabled." : "Recipient disabled.";
+        $this->emit("success", __("Success:"), __($message));
+    }
 }

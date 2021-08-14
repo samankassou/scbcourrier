@@ -20,6 +20,7 @@
                 <tr
                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-4 py-3">@lang("Name")</th>
+                    <th class="px-4 py-3">@lang("Status")</th>
                     <th class="px-4 py-3"></th>
                 </tr>
             </thead>
@@ -41,6 +42,20 @@
                                 </p>
                             </div>
                         </div>
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <label wire:change="toggleRecipientStatus({{ $recipient->id }})" for="toogle{{ $recipient->id }}"
+                            class="flex items-center cursor-pointer">
+                            <!-- toggle -->
+                            <div class="relative">
+                                <!-- input -->
+                                <input id="toogle{{ $recipient->id }}" type="checkbox" class="sr-only" @if($recipient->status) checked @endif>
+                                <!-- line -->
+                                <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                                <!-- dot -->
+                                <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+                            </div>
+                        </label>
                     </td>
                     <td class="px-4 py-3 text-sm">
                         <button title="{{ __("Edit") }}" class="text-yellow-600 hover:text-yellow-900"
