@@ -12,6 +12,12 @@ class Couriers extends Component
 
     public $search;
 
+    protected $listeners = [
+        'courierAdded' => '$refresh',
+        'courierUpdated' => '$refresh',
+        'courierDeleted' => '$refresh',
+    ];
+
     public function render()
     {
         $couriers = $this->getCouriers();
