@@ -16,6 +16,8 @@ class RedirectController extends Controller
     {
         if (auth()->user()->isAn('admin')) {
             return redirect()->route('admin.dashboard');
+        } else if (auth()->user()->isAn('writer')) {
+            return redirect()->route('writer.dashboard');
         } else {
             return redirect()->route('recipient.dashboard');
         }
