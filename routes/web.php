@@ -8,6 +8,7 @@ use App\Http\Livewire\Admin\Couriers\Show as ShowCourier;
 use App\Http\Livewire\Recipient\Couriers as RecipientCouriers;
 use App\Http\Livewire\Writer\Couriers as WriterCouriers;
 use App\Http\Livewire\Recipient\Couriers\Show as RecipientShowCourier;
+use App\Http\Livewire\Writer\Couriers\Show as WriterShowCourier;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Writer\Dashboard as WriterDashboard;
@@ -106,6 +107,8 @@ Route::middleware('auth')->group(function () {
             ->name('dashboard');
         Route::get('couriers', WriterCouriers::class)
             ->name('couriers');
+        Route::get('couriers/{courier}', WriterShowCourier::class)
+            ->name('couriers.show');
     });
 
 

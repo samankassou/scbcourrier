@@ -7,7 +7,7 @@
             <div class="relative text-left mb-4">
                 <input
                     class="appearance-none w-full bg-white border-gray-300 hover:border-gray-500 px-3 py-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500 focus:border-2 border"
-                    type="text" placeholder="@lang(" Search")" autocomplete="off" wire:model="search">
+                    type="text" placeholder="@lang("Search")" autocomplete="off" wire:model="search">
                 @if ($search)
                 <div class="absolute right-0 top-0 mt-3 mr-4 text-purple-lighter">
                     <a wire:click.prevent="$set('search', '')" href="#" class="text-gray-400 hover:text-yellow-600">
@@ -83,7 +83,7 @@
                         <x-courier.status status="{{ $courier->status }}" />
                     </td>
                     <td class="px-4 py-3 text-xs flex items-center gap-1">
-                        <a href="{{ route('admin.couriers.show', $courier->id) }}" title="@lang('Details')"
+                        <a href="{{ route('writer.couriers.show', $courier->id) }}" title="@lang('Details')"
                             class="text-yellow-600 hover:text-yellow-900">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
