@@ -12,6 +12,7 @@ use App\Http\Livewire\Writer\Couriers\Show as WriterShowCourier;
 use App\Http\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Writer\Dashboard as WriterDashboard;
+use App\Http\Livewire\Manager\Dashboard as ManagerDashboard;
 use App\Http\Livewire\Admin\Recipients;
 use App\Http\Livewire\Admin\Settings;
 use App\Http\Livewire\Recipient\Settings as RecipientSettings;
@@ -109,6 +110,15 @@ Route::middleware('auth')->group(function () {
             ->name('couriers');
         Route::get('couriers/{courier}', WriterShowCourier::class)
             ->name('couriers.show');
+    });
+
+    /* Manager routes */
+    Route::group([
+        'prefix' => 'manager',
+        'as' => 'manager.',
+    ], function () {
+        Route::get('dashboard', ManagerDashboard::class)
+            ->name('dashboard');
     });
 
 

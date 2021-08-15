@@ -63,7 +63,7 @@
             </tbody>
         </table>
     </div>
-    <div>
+    <div class="py-4 px-3">
         {{ $couriers->links() }}
     </div>
 </div>
