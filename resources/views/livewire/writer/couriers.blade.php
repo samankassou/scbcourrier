@@ -22,7 +22,7 @@
             </div>
         </div>
         {{-- create button --}}
-        <div class="m-w-12 my-3 mx-2" wire:click="$emit('openModal', 'admin.couriers.create')">
+        <div class="m-w-12 my-3 mx-2" wire:click="$emit('openModal', 'writer.couriers.create')">
             <button type="button"
                 class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -80,7 +80,9 @@
                             {{ substr($courier->comments, 0, 30).'...' }}
                     </td> --}}
                     <td class="px-4 py-3 text-xs">
-                        <x-courier.status status="{{ $courier->status }}" />
+                        @if ($courier->status)
+                            <x-courier.status status="{{ $courier->status }}" />
+                        @endif
                     </td>
                     <td class="px-4 py-3 text-xs flex items-center gap-1">
                         <a href="{{ route('writer.couriers.show', $courier->id) }}" title="@lang('Details')"
