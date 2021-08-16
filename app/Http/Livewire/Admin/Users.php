@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Admin;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 
 class Users extends Component
 {
+    use WithPagination;
+
     protected $listeners = [
         'userAdded' => '$refresh',
         'userUpdated' => '$refresh',
