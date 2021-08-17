@@ -11,6 +11,16 @@ class Couriers extends Component
     use WithPagination;
 
     public $search;
+    public $orderField = 'code';
+    public $orderDirection = 'ASC';
+
+    public $filters = [
+        'state' => '',
+        'date' => [
+            'start' => '',
+            'end' => '',
+        ],
+    ];
 
     protected $listeners = [
         'courierAdded' => '$refresh',
@@ -22,11 +32,22 @@ class Couriers extends Component
     {
         //$this->couriers = Courier::paginate(10);
     }
+
+    public function setOrderField(string $name)
+    {
+        if ($name === $this->orderField) {
+            $this->orderDirection = $this->orderDirection === 'ASC' ? 'DESC' : 'ASC';
+        } else {
+            $this->orderField = $name;
+            $this->reset('orderDirection');
+        }
+    }
     public function render()
     {
         $couriers = $this->getCouriers();
         $status = ['En cours', 'Traité', 'Rejeté'];
-        return view('livewire.admin.couriers', compact('couriers', 'status'))
+        $dates = Courier::pluck('date')->sort()->unique();
+        return view('livewire.admin.couriers', compact('couriers', 'status', 'dates'))
             ->extends('layouts.admin', ['title' => "Couriers"])
             ->section('main');
     }
@@ -35,6 +56,9 @@ class Couriers extends Component
     {
         $query = Courier::query();
         $search = '%' . $this->search . '%';
+        if (!empty($this->filters['state'])) {
+            $query->where('status', $this->filters['state']);
+        }
         $query->where('code', 'LIKE', $search);
         $query->orWhere('sender', 'LIKE', $search);
         $query->orWhere('object', 'LIKE', $search);
@@ -48,6 +72,10 @@ class Couriers extends Component
             $query->where('name', 'LIKE', $search);
             $query->orWhere('email', 'LIKE', $search);
         });
+
+        $query->orderBy($this->orderField, $this->orderDirection);
+
+
         return $query->latest()->paginate(10);
     }
 
