@@ -1,46 +1,50 @@
 @section('title', __('Couriers'))
     {{-- New Table --}}
     <div class="w-full overflow-hidden rounded-lg shadow-md">
-        <div class="flex items-center mb-3 dark:bg-gray-700">
-            {{-- Search bar --}}
-            <div class="py-4 px-3">
-                <div class="relative text-left">
-                    <input
-                        class="appearance-none w-full bg-white border-gray-300 hover:border-gray-500 px-3 py-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500 focus:border-2 border"
-                        type="text" placeholder="@lang('Search')" autocomplete="off" wire:model="search">
-                    @if ($search)
-                        <div class="absolute right-0 top-0 mt-3 mr-4 text-purple-lighter">
-                            <a wire:click.prevent="$set('search', '')" href="#" class="text-gray-400 hover:text-yellow-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </a>
-                        </div>
-                    @endif
+        <div class="flex items-center justify-between mb-3 dark:bg-gray-700">
+            <div class="flex items-center gap-1">
+                {{-- Search bar --}}
+                <div class="py-4 px-3">
+                    <div class="relative text-left">
+                        <input
+                            class="appearance-none w-full bg-white border-gray-300 hover:border-gray-500 px-3 py-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500 focus:border-2 border"
+                            type="text" placeholder="@lang('Search')" autocomplete="off" wire:model="search">
+                        @if ($search)
+                            <div class="absolute right-0 top-0 mt-3 mr-4 text-purple-lighter">
+                                <a wire:click.prevent="$set('search', '')" href="#"
+                                    class="text-gray-400 hover:text-yellow-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-            </div>
-            {{-- Filter --}}
-            <div class="py-4 px-3 w-40">
-                <select wire:model="filters.state"
-                    class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
-                    <option value="">@lang('Status')</option>
-                    @foreach ($status as $state)
-                        <option class="py-4" value="{{ $state }}">{{ $state }}</option>
-                    @endforeach
-                </select>
-            </div>
-            {{-- Filter --}}
-            <div class="py-4 px-3 w-40">
-                <select wire:model="filters.date"
-                    class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
-                    <option value="">@lang('Date')</option>
-                    @foreach ($dates as $date)
-                        <option class="py-4" value="{{ $date }}">{{ date_format(date_create($date), 'd/m/Y') }}
-                        </option>
-                    @endforeach
-                </select>
+                {{-- Filter --}}
+                <div class="py-4 px-3 w-40">
+                    <select wire:model="filters.state"
+                        class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        <option value="">@lang('Status')</option>
+                        @foreach ($status as $state)
+                            <option class="py-4" value="{{ $state }}">{{ $state }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                {{-- Filter --}}
+                <div class="py-4 px-3 w-40">
+                    <select wire:model="filters.date"
+                        class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        <option value="">@lang('Date')</option>
+                        @foreach ($dates as $date)
+                            <option class="py-4" value="{{ $date }}">
+                                {{ date_format(date_create($date), 'd/m/Y') }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
             {{-- create button --}}
             <div class="py-4 px-3" wire:click="$emit('openModal', 'admin.couriers.create')">
