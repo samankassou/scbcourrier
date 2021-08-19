@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Charts\Admin\Couriers\Daily;
 use App\Models\User;
 use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
+use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,8 +25,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
+        $charts->register([
+            Daily::class
+        ]);
         User::observe(UserObserver::class);
     }
 }
