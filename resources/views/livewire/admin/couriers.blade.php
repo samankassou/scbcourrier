@@ -106,20 +106,8 @@
                                     </div>
                                 @endif
                             </td>
-                            {{-- <td class="px-4 py-3 text-sm">
-                            {{ substr($courier->comments, 0, 30).'...' }}
-                        </td> --}}
                             <td class="px-4 py-3 text-xs">
-                                <select wire:change="updateCourierStatus({{ $courier->id }}, $event.target.value)"
-                                    class="apearance-none mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 dark:text-gray-800 text-xs">
-                                    <option value=""></option>
-                                    @foreach ($status as $state)
-                                        <option class="py-4" value="{{ $state }}"
-                                            {{ $courier->status === $state ? 'selected' : '' }}>
-                                            <x-courier.status status="{{ $state }}" />
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <x-courier.status status="{{ $courier->status }}" />
                             </td>
                             <td class="px-4 py-3 text-xs flex items-center gap-1">
                                 <a href="{{ route('admin.couriers.show', $courier->id) }}" title="@lang('Details')"

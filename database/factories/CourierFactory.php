@@ -29,7 +29,7 @@ class CourierFactory extends Factory
             'object' => $this->faker->paragraph(2),
             'recipient_id' => User::whereIs('recipient')->get()->random()->id,
             'category_id' => 1,
-            'status' => $this->faker->randomElement(['En cours', 'Traité', 'Rejeté']),
+            'status' => $this->faker->randomElement(['new', 'assigned', 'pending', 'processed', 'rejected']),
             'comments' => $this->faker->paragraph(2),
             'created_by' => 1,
         ];

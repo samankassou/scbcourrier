@@ -312,7 +312,14 @@
         <script>
             const chart = new Chartisan({
                 el: '#daily',
-                url: "@chart('daily')"
+                url: "@chart('daily')",
+                hooks: new ChartisanHooks()
+                    .datasets(['pie'])
+                    .tooltip()
+                    .legend({
+                        position: 'top'
+                    })
+                    .colors(['rgb(16, 185, 129)', 'rgb(59, 130, 256)', 'rgb(254, 26, 26)']),
             });
 
         </script>

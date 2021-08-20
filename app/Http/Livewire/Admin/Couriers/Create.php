@@ -28,7 +28,7 @@ class Create extends ModalComponent
     {
         $recipients = User::activeRecipients()->get();
         $status = [
-            'En cours', 'Traité', 'Rejeté'
+            'new', 'assigned', 'pending', 'processed', 'rejected'
         ];
         return view('livewire.admin.couriers.create', compact('recipients', 'status'));
     }

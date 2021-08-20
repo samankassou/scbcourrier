@@ -1,12 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Charts\Admin\Couriers;
 
+use App\Models\Courier;
 use Chartisan\PHP\Chartisan;
-use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use ConsoleTVs\Charts\BaseChart;
 
 class Daily extends BaseChart
 {
@@ -17,9 +18,11 @@ class Daily extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        $totalProcessedCouriers = Courier::processed()->count();
+        $totalPendingCouriers = Courier::pending()->count();
+        $totalRejectedCouriers = Courier::rejected()->count();
         return Chartisan::build()
-            ->labels(['First', 'Second', 'Third'])
-            ->dataset('Sample', [1, 2, 3])
-            ->dataset('Sample 2', [3, 2, 1]);
+            ->labels(['Traités', 'En cours', 'Rejetés'])
+            ->dataset('Courriers', [$totalProcessedCouriers, $totalPendingCouriers, $totalRejectedCouriers]);
     }
 }

@@ -41,7 +41,7 @@ class Edit extends ModalComponent
     {
         $recipients = User::activeRecipients()->get();
         $status = [
-            'En cours', 'Traité', 'Rejeté'
+            'new', 'assigned', 'pending', 'processed', 'rejected'
         ];
         return view('livewire.admin.couriers.edit', compact('recipients', 'status'));
     }
