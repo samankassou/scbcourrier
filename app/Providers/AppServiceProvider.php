@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Charts\Admin\Couriers\Daily;
+use App\Models\Courier;
 use App\Models\User;
+use App\Observers\CourierObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 use ConsoleTVs\Charts\Registrar as Charts;
@@ -31,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
             Daily::class
         ]);
         User::observe(UserObserver::class);
+        Courier::observe(CourierObserver::class);
     }
 }

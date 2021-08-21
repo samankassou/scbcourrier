@@ -40,6 +40,16 @@ class Courier extends Model
         return $this->belongsTo(User::class, 'recipient_id');
     }
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
     public function category()
     {
         return $this->belongsTo(User::class, 'recipient_id');

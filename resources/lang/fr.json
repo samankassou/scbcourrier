@@ -750,5 +750,9 @@
     "assigned": "attribué",
     "pending": "en cours",
     "processed": "traité",
-    "rejected": "rejeté"
+    "rejected": "rejeté",
+    "Created by": "Créé(e) par",
+    "Updated by": "Mis(e) à jour par",
+    "Date of creation": "Date de création",
+    "Last update": "Dernière mise à jour"
 }

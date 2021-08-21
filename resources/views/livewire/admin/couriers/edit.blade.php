@@ -31,7 +31,7 @@
                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
                     <option value="">Sélectionnez un attributaire</option>
                     @foreach ($recipients as $recipient)
-                    <option class="py-4" value="{{ $recipient->id }}">{{ $recipient->name }}</option>
+                        <option class="py-4" value="{{ $recipient->id }}">{{ $recipient->name }}</option>
                     @endforeach
                 </select>
                 <x-messages.error for="recipient" />
@@ -49,7 +49,7 @@
                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
                     <option value="">Sélectionnez un état</option>
                     @foreach ($status as $state)
-                    <option value="{{ $state }}">{{ $state }}</option>
+                        <option value="{{ $state }}">@lang($state)</option>
                     @endforeach
                 </select>
                 <x-messages.error for="state" />
