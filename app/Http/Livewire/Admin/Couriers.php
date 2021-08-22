@@ -45,7 +45,9 @@ class Couriers extends Component
     public function render()
     {
         $couriers = $this->getCouriers();
-        $status = ['En cours', 'Traité', 'Rejeté'];
+        $status = [
+            'new', 'assigned', 'pending', 'processed', 'rejected'
+        ];
         $dates = Courier::pluck('date')->sort()->unique();
         return view('livewire.admin.couriers', compact('couriers', 'status', 'dates'))
             ->extends('layouts.admin', ['title' => "Couriers"])
