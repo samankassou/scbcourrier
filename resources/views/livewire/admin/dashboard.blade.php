@@ -352,8 +352,13 @@
                 hooks: new ChartisanHooks()
                     .datasets(['pie'])
                     .tooltip()
-                    .legend({
-                        position: 'top'
+                    .options({
+                        xAxis: {
+                            show: false
+                        },
+                        yAxis: {
+                            show: false
+                        },
                     })
                     .colors([
                         'rgb(15, 118, 110)',
