@@ -111,7 +111,6 @@
             </div>
         </div>
     </div>
-    <div style="height: 300px" id="daily"></div>
     <h2 class="mb-6 text-xl font-semibold text-gray-500 dark:text-gray-200">Statistiques journalières</h2>
     {{-- Cards --}}
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -188,6 +187,7 @@
             </div>
         </div>
     </div>
+    <div style="height: 300px" id="daily"></div>
 
     <h2 class="mb-6 text-xl font-semibold text-gray-500 dark:text-gray-200">Statistiques hebdomadaires</h2>
     {{-- Cards --}}
@@ -265,6 +265,7 @@
             </div>
         </div>
     </div>
+    <div style="height: 300px" id="weekly"></div>
 
     <h2 class="mb-6 text-xl font-semibold text-gray-500 dark:text-gray-200">Statistiques mensuelles</h2>
     {{-- Cards --}}
@@ -346,9 +347,9 @@
         <script src="{{ asset('vendor/chartjs/echarts.min.js') }}"></script>
         <script src="{{ asset('vendor/chartjs/chartisan_echarts.js') }}"></script>
         <script>
-            const chart = new Chartisan({
+            const dailyChart = new Chartisan({
                 el: '#daily',
-                url: "@chart('daily')",
+                url: "@chart('admin.couriers.daily')",
                 hooks: new ChartisanHooks()
                     .datasets(['pie'])
                     .tooltip()
@@ -368,6 +369,13 @@
                         'rgb(254, 26, 26)'
                     ]),
             });
+            const weeklyChart = new Chartisan({
+                el: '#weekly',
+                url: "@chart('admin.couriers.weekly')",
+                hooks: new ChartisanHooks()
+                    .datasets(['line'])
+                    .tooltip()
+            })
 
         </script>
     @endpush

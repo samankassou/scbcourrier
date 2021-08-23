@@ -36,6 +36,29 @@ class Show extends Component
             ->section('main');
     }
 
+    public function updateStatus()
+    {
+        $this->courier->update(['status' => $this->state]);
+        $this->emit("success", __("Success:"), __("Courier updated!"));
+    }
+
+    public function selectRecipient()
+    {
+        if ($this->recipient) {
+            $this->courier->update([
+                'recipient_id' => $this->recipient,
+                'status' => 'assigned'
+            ]);
+        } else {
+            $this->courier->update([
+                'recipient_id' => null,
+            ]);
+        }
+        $this->state = $this->courier->status;
+        $this->courier->refresh();
+        $this->emit("success", __("Success:"), __("Courier updated!"));
+    }
+
     public function redirectToList()
     {
         $this->redirectRoute('admin.couriers');

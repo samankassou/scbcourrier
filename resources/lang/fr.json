@@ -751,6 +751,7 @@
     "pending": "en cours",
     "processed": "traité",
     "rejected": "rejeté",
+    "none": "aucun(e)",
     "Created by": "Créé(e) par",
     "Updated by": "Mis(e) à jour par",
     "Date of creation": "Date de création",

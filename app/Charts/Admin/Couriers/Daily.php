@@ -12,6 +12,14 @@ use ConsoleTVs\Charts\BaseChart;
 class Daily extends BaseChart
 {
     /**
+     * Determines the name suffix of the chart route.
+     * This will also be used to get the chart URL
+     * from the blade directive. If null, the chart
+     * name will be used
+     */
+    public ?string $routeName = 'admin.couriers.daily';
+
+    /**
      * Handles the HTTP request for the given chart.
      * It must always return an instance of Chartisan
      * and never a string or an array.

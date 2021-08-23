@@ -20,8 +20,9 @@
                 </div>
                 <div class="py-4 px-3">
                     <span class="text-sm text-gray-600">Attribuer à:</span>
-                    <select id="recipient" wire:ignore wire:model.lazy="recipient"
+                    <select id="recipient" wire:ignore wire:model.lazy="recipient" wire:change="selectRecipient"
                         class="py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        <option value="">@lang("none")</option>
                         @foreach ($recipients as $recipient)
                             <option value="{{ $recipient->id }}">{{ $recipient->name }}</option>
                         @endforeach
@@ -29,7 +30,7 @@
                 </div>
                 <div class="py-4 px-3">
                     <span class="text-sm text-gray-700">Changer l'état en:</span>
-                    <select id="state" wire:ignore wire:model.lazy="state"
+                    <select id="state" wire:ignore wire:model="state" wire:change="updateStatus"
                         class="inline-block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
                         @foreach ($status as $state)
                             <option value="{{ $state }}">@lang($state)</option>

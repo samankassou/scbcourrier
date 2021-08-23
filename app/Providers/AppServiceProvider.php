@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Charts\Admin\Couriers\Daily;
 use App\Models\Courier;
 use App\Models\User;
 use App\Observers\CourierObserver;
@@ -30,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Charts $charts)
     {
         $charts->register([
-            Daily::class
+            \App\Charts\Admin\Couriers\Daily::class,
+            \App\Charts\Admin\Couriers\Weekly::class
         ]);
         User::observe(UserObserver::class);
         Courier::observe(CourierObserver::class);
