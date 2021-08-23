@@ -29,4 +29,14 @@
         })
 
     </script>
+    @if (session('alert'))
+        <script>
+            iziToast.success({
+                title: "{{ session('alert') }}",
+                message: "{{ session('message') }}",
+                position: 'topRight',
+            })
+
+        </script>
+    @endif
 @endpush

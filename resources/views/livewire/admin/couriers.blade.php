@@ -29,7 +29,7 @@
                         class="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
                         <option value="">@lang('Status')</option>
                         @foreach ($status as $state)
-                            <option class="py-4" value="{{ $state }}">{{ $state }}</option>
+                            <option class="py-4" value="{{ $state }}">@lang($state)</option>
                         @endforeach
                     </select>
                 </div>

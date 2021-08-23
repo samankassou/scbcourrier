@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <div class="py-4 px-3"
-                    wire:click="$emit('openModal', 'admin.couriers.delete', {{ json_encode(['courier' => $courier->id]) }})">
+                    wire:click="$emit('openModal', 'admin.couriers.delete-with-redirect', {{ json_encode(['courier' => $courier->id]) }})">
                     <button type="button"
                         class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
