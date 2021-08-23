@@ -11,6 +11,8 @@ class Dashboard extends Component
     {
         $data['totalCouriers'] = Courier::count();
         $data['totalProcessedCouriers'] = Courier::processed()->count();
+        $data['totalNewCouriers'] = Courier::new()->count();
+        $data['totalAssignedCouriers'] = Courier::assigned()->count();
         $data['totalPendingCouriers'] = Courier::pending()->count();
         $data['totalRejectedCouriers'] = Courier::rejected()->count();
         return view('livewire.admin.dashboard', $data)

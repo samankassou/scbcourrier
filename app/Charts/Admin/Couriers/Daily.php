@@ -18,11 +18,25 @@ class Daily extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $totalProcessedCouriers = Courier::processed()->count();
+        $totalNewCouriers = Courier::new()->count();
+        $totalAssignedCouriers = Courier::assigned()->count();
         $totalPendingCouriers = Courier::pending()->count();
+        $totalProcessedCouriers = Courier::processed()->count();
         $totalRejectedCouriers = Courier::rejected()->count();
         return Chartisan::build()
-            ->labels(['Traités', 'En cours', 'Rejetés'])
-            ->dataset('Courriers', [$totalProcessedCouriers, $totalPendingCouriers, $totalRejectedCouriers]);
+            ->labels([
+                'Nouveaux',
+                'Attribués',
+                'En cours',
+                'Traités',
+                'Rejetés'
+            ])
+            ->dataset('Courriers', [
+                $totalNewCouriers,
+                $totalAssignedCouriers,
+                $totalPendingCouriers,
+                $totalProcessedCouriers,
+                $totalRejectedCouriers
+            ]);
     }
 }

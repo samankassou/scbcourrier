@@ -55,18 +55,28 @@ class Courier extends Model
         return $this->belongsTo(User::class, 'recipient_id');
     }
 
+    public function scopeNew($query)
+    {
+        $query->where('status', 'new');
+    }
+
     public function scopePending($query)
     {
-        $query->where('status', 'En cours');
+        $query->where('status', 'pending');
+    }
+
+    public function scopeAssigned($query)
+    {
+        $query->where('status', 'assigned');
     }
 
     public function scopeProcessed($query)
     {
-        $query->where('status', 'Traité');
+        $query->where('status', 'processed');
     }
 
     public function scopeRejected($query)
     {
-        $query->where('status', 'Rejeté');
+        $query->where('status', 'rejected');
     }
 }

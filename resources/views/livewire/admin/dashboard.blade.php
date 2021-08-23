@@ -74,6 +74,42 @@
                 </p>
             </div>
         </div>
+        {{-- Card --}}
+        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    Nouveaux Courriers
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    {{ $totalNewCouriers }}
+                </p>
+            </div>
+        </div>
+        {{-- Card --}}
+        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    Courriers attribués
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    {{ $totalAssignedCouriers }}
+                </p>
+            </div>
+        </div>
     </div>
     <div style="height: 300px" id="daily"></div>
     <h2 class="mb-6 text-xl font-semibold text-gray-500 dark:text-gray-200">Statistiques journalières</h2>
@@ -319,7 +355,13 @@
                     .legend({
                         position: 'top'
                     })
-                    .colors(['rgb(16, 185, 129)', 'rgb(59, 130, 256)', 'rgb(254, 26, 26)']),
+                    .colors([
+                        'rgb(15, 118, 110)',
+                        'rgb(67, 56, 202)',
+                        'rgb(194, 65, 12)',
+                        'rgb(16, 185, 129)',
+                        'rgb(254, 26, 26)'
+                    ]),
             });
 
         </script>
