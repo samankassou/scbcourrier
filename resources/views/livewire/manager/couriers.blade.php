@@ -32,8 +32,7 @@
                         <th class="px-4 py-3">@lang("Sender")</th>
                         <th class="px-4 py-3">@lang("Object")</th>
                         <th class="px-4 py-3">@lang("Assignee")</th>
-                        {{-- <th class="px-4 py-3">@lang("Comments")</th> --}}
-                        <th class="px-4 py-3">@lang("Status")</th>
+                        <th class="px-4 py-3">@lang("State")</th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
@@ -64,9 +63,6 @@
                                     </div>
                                 @endif
                             </td>
-                            {{-- <td class="px-4 py-3 text-sm">
-                            {{ substr($courier->comments, 0, 30).'...' }}
-                    </td> --}}
                             <td class="px-4 py-3 text-xs">
                                 @if ($courier->status)
                                     <x-courier.status status="{{ $courier->status }}" />

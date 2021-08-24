@@ -74,7 +74,7 @@
                         </x-table-header>
                         <th class="px-4 py-3">@lang("Assignee")</th>
                         {{-- <th class="px-4 py-3">@lang("Comments")</th> --}}
-                        <x-table-header :direction="$orderDirection" name="status" :field="$orderField">@lang("Status")
+                        <x-table-header :direction="$orderDirection" name="status" :field="$orderField">@lang("State")
                         </x-table-header>
                         <th class="px-4 py-3"></th>
                     </tr>
