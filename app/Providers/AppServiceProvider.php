@@ -28,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
-        \Carbon\Carbon::setlocale(LC_TIME, config('app.locale'));
         $charts->register([
             \App\Charts\Admin\Couriers\Daily::class,
             \App\Charts\Admin\Couriers\Weekly::class

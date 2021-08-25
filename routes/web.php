@@ -16,8 +16,7 @@ use App\Http\Livewire\Recipient\Dashboard as RecipientDashboard;
 use App\Http\Livewire\Writer\Dashboard as WriterDashboard;
 use App\Http\Livewire\Manager\Dashboard as ManagerDashboard;
 use App\Http\Livewire\Admin\Recipients;
-use App\Http\Livewire\Admin\Settings;
-use App\Http\Livewire\Recipient\Settings as RecipientSettings;
+use App\Http\Livewire\UserSettings as Settings;
 use App\Http\Livewire\Admin\Users;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -54,16 +53,15 @@ Route::get('password/reset', Email::class)
 Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
+
 Route::middleware('auth')->group(function () {
+
     Route::get('email/verify', Verify::class)
         ->middleware('throttle:6,1')
         ->name('verification.notice');
 
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');
-});
-
-Route::middleware('auth')->group(function () {
 
     Route::get('redirect', RedirectController::class)->name('redirect');
 
@@ -97,7 +95,7 @@ Route::middleware('auth')->group(function () {
             ->name('couriers');
         Route::get('couriers/{courier}', RecipientShowCourier::class)
             ->name('couriers.show');
-        Route::get('settings', RecipientSettings::class)
+        Route::get('settings', Settings::class)
             ->name('settings');
     });
 
@@ -112,6 +110,8 @@ Route::middleware('auth')->group(function () {
             ->name('couriers');
         Route::get('couriers/{courier}', WriterShowCourier::class)
             ->name('couriers.show');
+        Route::get('settings', Settings::class)
+            ->name('settings');
     });
 
     /* Manager routes */
@@ -125,6 +125,8 @@ Route::middleware('auth')->group(function () {
             ->name('couriers');
         Route::get('couriers/{courier}', ManagerShowCourier::class)
             ->name('couriers.show');
+        Route::get('settings', Settings::class)
+            ->name('settings');
     });
 
 

@@ -30,7 +30,7 @@ class Weekly extends BaseChart
         $lastWeek = today()->subDay(7);
         for ($i = 1; $i <= 7; $i++) {
             $lastWeek = $lastWeek->addDay();
-            $data['labels'][] = $lastWeek->format('D');
+            $data['labels'][] = $lastWeek->translatedFormat('D');
 
             $data['new_count'][] = Courier::where('status', 'new')
                 ->whereDate('date', $lastWeek)->count();
