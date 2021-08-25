@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Courier;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Dashboard extends Component

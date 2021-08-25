@@ -33,6 +33,7 @@ class Create extends ModalComponent
             'code'         => $this->code,
             'sender'       => $this->sender,
             'object'       => $this->object,
+            'status'       => 'new',
         ]);
 
         $this->emit("courierAdded");

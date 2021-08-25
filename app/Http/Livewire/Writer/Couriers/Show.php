@@ -9,6 +9,11 @@ class Show extends Component
 {
     public $courier;
 
+    protected $listeners = [
+        'courierUpdated' => '$refresh',
+        'courierDeleted' => 'redirectToList',
+    ];
+
     public function mount(Courier $courier)
     {
         $this->courier = $courier;
@@ -20,5 +25,10 @@ class Show extends Component
         return view('livewire.writer.couriers.show')
             ->extends('layouts.admin', ['title' => $title])
             ->section('main');
+    }
+
+    public function redirectToList()
+    {
+        $this->redirectRoute('writer.couriers');
     }
 }

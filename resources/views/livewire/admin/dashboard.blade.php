@@ -373,8 +373,18 @@
                 el: '#weekly',
                 url: "@chart('admin.couriers.weekly')",
                 hooks: new ChartisanHooks()
-                    .datasets(['line'])
+                    .datasets([{
+                        type: 'bar'
+                    }])
                     .tooltip()
+                    .legend(true)
+                    .colors([
+                        'rgb(15, 118, 110)',
+                        'rgb(67, 56, 202)',
+                        'rgb(194, 65, 12)',
+                        'rgb(16, 185, 129)',
+                        'rgb(254, 26, 26)'
+                    ]),
             })
 
         </script>
