@@ -5,29 +5,25 @@
                 Détails du courrier
             </div>
             <div class="flex">
-                {{-- edit button --}}
-                <div class="py-4 px-3"
-                    wire:click="$emit('openModal', 'writer.couriers.edit', {{ json_encode(['courier' => $courier->id]) }})">
-                    <button type="button"
-                        class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
-                        @lang("Edit")
-                    </button>
+                <div class="py-4 px-3">
+                    <span class="text-sm text-gray-700">Changer l'état en:</span>
+                    <select id="state" wire:ignore wire:model="state" wire:change="updateStatus"
+                        class="inline-block py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        @foreach ($status as $state)
+                            <option value="{{ $state }}">@lang($state)</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="py-4 px-3"
-                    wire:click="$emit('openModal', 'writer.couriers.delete-with-redirect', {{ json_encode(['courier' => $courier->id]) }})">
+                    wire:click="$emit('openModal', 'recipient.couriers.reject', {{ json_encode(['courier' => $courier->id]) }})">
                     <button type="button"
-                        class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring-yellow active:bg-yellow-700 transition duration-150 ease-in-out">
+                        class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring-red active:bg-red-700 transition duration-150 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
                         </svg>
-                        @lang("Delete")
+                        @lang("Reject")
                     </button>
                 </div>
             </div>

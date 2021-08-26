@@ -1,6 +1,27 @@
 @section('title', __('Couriers'))
     {{-- New Table --}}
     <div class="w-full overflow-hidden rounded-lg shadow-md">
+        <div class="flex justify-between items-center dark:bg-gray-700">
+            {{-- Search bar --}}
+            <div class="py-4 px-3 pb-0 w-1/3">
+                <div class="relative text-left mb-4">
+                    <input
+                        class="appearance-none w-full bg-white border-gray-300 hover:border-gray-500 px-3 py-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500 focus:border-2 border"
+                        type="text" placeholder="@lang('Search')" autocomplete="off" wire:model="search">
+                    @if ($search)
+                        <div class="absolute right-0 top-0 mt-3 mr-4 text-purple-lighter">
+                            <a wire:click.prevent="$set('search', '')" href="#" class="text-gray-400 hover:text-yellow-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </a>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -10,7 +31,7 @@
                         <th class="px-4 py-3">@lang("Date")</th>
                         <th class="px-4 py-3">@lang("Sender")</th>
                         <th class="px-4 py-3">@lang("Object")</th>
-                        <th class="px-4 py-3">@lang("State")</th>
+                        <th class="px-4 py-3">@lang("Status")</th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
@@ -27,21 +48,14 @@
                                 {{ $courier->sender }}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                                {{ substr($courier->object, 0, 30) . '...' }}
+                                {{ substr($courier->object, 0, 20) . '...' }}
                             </td>
                             <td class="px-4 py-3 text-xs">
-                                <select wire:change="updateCourierStatus({{ $courier->id }}, $event.target.value)"
-                                    class="apearance-none mt-1 block w-full py-2 px-3 border border-gray-300 bg-white dark:bg-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 dark:text-gray-800 text-xs">
-                                    <option value=""></option>
-                                    @foreach ($status as $state)
-                                        <option class="py-4" value="{{ $state }}"
-                                            {{ $courier->status === $state ? 'selected' : '' }}>
-                                            <x-courier.status status="{{ $state }}" />
-                                        </option>
-                                    @endforeach
-                                </select>
+                                @if ($courier->status)
+                                    <x-courier.status status="{{ $courier->status }}" />
+                                @endif
                             </td>
-                            <td class="px-4 py-3 text-sm">
+                            <td class="px-4 py-3 text-xs flex items-center gap-1">
                                 <a href="{{ route('recipient.couriers.show', $courier->id) }}" title="@lang('Details')"
                                     class="text-yellow-600 hover:text-yellow-900">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -56,7 +70,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="py-3 text-center text-sm text-gray-500" colspan="7">@lang("No item")</td>
+                            <td class="text-center text-gray-500 py-3 px-4" colspan="7">@lang("No item")</td>
                         </tr>
                     @endforelse
                 </tbody>
