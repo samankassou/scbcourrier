@@ -15,10 +15,7 @@ class Couriers extends Component
     public function render()
     {
         $couriers = $this->getCouriers();
-        $status = [
-            'new', 'assigned', 'pending', 'processed', 'rejected'
-        ];
-        return view('livewire.recipient.couriers', compact('couriers', 'status'))
+        return view('livewire.recipient.couriers', compact('couriers'))
             ->extends('layouts.admin', ['title' => "Couriers"])
             ->section('main');
     }
@@ -36,10 +33,12 @@ class Couriers extends Component
         $query->orWhereMonth('date', $this->search);
         $query->orWhereYear('date', $this->search);
         $query->orWhereDate('date', $this->search);
-        $query->orWhereHas('recipient', function ($query) use ($search) {
-            $query->where('name', 'LIKE', $search);
-            $query->orWhere('email', 'LIKE', $search);
-        });
+        $query->MyCouriers();
+        //dd($query->get());
+        // $query->orWhereHas('recipient', function ($query) use ($search) {
+        //     $query->where('name', 'LIKE', $search);
+        //     $query->orWhere('email', 'LIKE', $search);
+        // });
         return $query->latest()->paginate(10);
     }
 }

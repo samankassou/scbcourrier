@@ -55,6 +55,11 @@ class Courier extends Model
         return $this->belongsTo(User::class, 'recipient_id');
     }
 
+    public function scopeMyCouriers($query)
+    {
+        $query->where('recipient_id', auth()->user()->id);
+    }
+
     public function scopeNew($query)
     {
         $query->where('status', 'new');
@@ -78,5 +83,10 @@ class Courier extends Model
     public function scopeRejected($query)
     {
         $query->where('status', 'rejected');
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
     }
 }

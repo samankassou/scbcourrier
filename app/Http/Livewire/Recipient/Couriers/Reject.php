@@ -10,6 +10,10 @@ class Reject extends ModalComponent
     public $courier;
     public $note;
 
+    protected $listeners = [
+        'courierUpdated' => '$refresh',
+    ];
+
     protected $rules = ['note' => 'required'];
     protected $validationAttributes = ['note' => 'Motif'];
 
@@ -27,6 +31,9 @@ class Reject extends ModalComponent
     {
         $this->validate();
         $this->courier->update(['status' => 'rejected']);
+        $this->courier->notes()->create([
+            'text' => $this->note
+        ]);
 
         $this->emit("courierUpdated");
         $this->emit("success", __("Success:"), __("Courier updated!"));

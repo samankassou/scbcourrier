@@ -31,7 +31,7 @@
                         <th class="px-4 py-3">@lang("Date")</th>
                         <th class="px-4 py-3">@lang("Sender")</th>
                         <th class="px-4 py-3">@lang("Object")</th>
-                        <th class="px-4 py-3">@lang("Status")</th>
+                        <th class="px-4 py-3">@lang("State")</th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>

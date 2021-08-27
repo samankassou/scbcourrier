@@ -14,18 +14,20 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="py-4 px-3"
-                    wire:click="$emit('openModal', 'recipient.couriers.reject', {{ json_encode(['courier' => $courier->id]) }})">
-                    <button type="button"
-                        class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring-red active:bg-red-700 transition duration-150 ease-in-out">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                        </svg>
-                        @lang("Reject")
-                    </button>
-                </div>
+                @if ($state !== 'rejected')
+                    <div class="py-4 px-3"
+                        wire:click="$emit('openModal', 'recipient.couriers.reject', {{ json_encode(['courier' => $courier->id]) }})">
+                        <button type="button"
+                            class="flex justify-center gap-2 items-center w-full px-3 py-1 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring-red active:bg-red-700 transition duration-150 ease-in-out">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                            </svg>
+                            @lang("Reject")
+                        </button>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="mb-4">
