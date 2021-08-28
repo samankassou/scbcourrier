@@ -60,6 +60,7 @@ class CourierObserver
     {
         $courier->deleted_by = auth()->user()->id;
         $courier->save();
+        $courier->notes()->delete();
     }
 
     /**

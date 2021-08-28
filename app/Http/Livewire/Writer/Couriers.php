@@ -20,13 +20,18 @@ class Couriers extends Component
 
     public function render()
     {
-        $couriers = $this->getCouriers();
+        $couriers = $this->getPaginatedCouriers();
         $status = [
             'new', 'assigned', 'pending', 'processed', 'rejected'
         ];
         return view('livewire.writer.couriers', compact('couriers', 'status'))
             ->extends('layouts.admin', ['title' => "Couriers"])
             ->section('main');
+    }
+
+    public function getPaginatedCouriers()
+    {
+        return $this->getCouriers()->latest()->paginate(10);
     }
 
     public function getCouriers()
@@ -46,6 +51,12 @@ class Couriers extends Component
             $query->where('name', 'LIKE', $search);
             $query->orWhere('email', 'LIKE', $search);
         });
-        return $query->latest()->paginate(10);
+        return $query;
+    }
+
+    public function export()
+    {
+        $couriers = $this->getCouriers()->get();
+        dd($couriers);
     }
 }
