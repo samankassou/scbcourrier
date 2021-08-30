@@ -10,7 +10,8 @@ class Recipients extends Component
     protected $listeners = [
         'recipientAdded' => '$refresh',
         'recipientUpdated' => '$refresh',
-        'recipientDeleted' => '$refresh'
+        'recipientDeleted' => '$refresh',
+        'languageChanged' => '$refresh'
     ];
 
     public function render()

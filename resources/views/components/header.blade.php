@@ -29,6 +29,9 @@
                     </template>
                 </button>
             </li>
+            <li>
+                @livewire('language-switcher')
+            </li>
             <!-- Profile menu -->
             <li class="relative">
                 <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
